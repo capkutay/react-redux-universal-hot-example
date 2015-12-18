@@ -16,9 +16,9 @@ export default class Home extends Component {
                 <img src={logoImage}/>
               </p>
             </div>
-            <h1>React Redux Example</h1>
+            <h1>Striim</h1>
 
-            <h2>All the modern best practices in one example.</h2>
+            <h2>Make data useful the instant it's born</h2>
 
             <p>
               <a className={styles.github} href="https://github.com/erikras/react-redux-universal-hot-example"

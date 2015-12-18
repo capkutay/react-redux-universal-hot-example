@@ -105,7 +105,7 @@ app.use((req, res) => {
                    ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store}/>));
         });
       }
-      catch(err) {
+      catch (err) {
         console.error('DATA FETCHING ERROR:', pretty.render(err));
         res.status(500);
         hydrateOnClient();

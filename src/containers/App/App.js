@@ -63,7 +63,7 @@ export default class App extends Component {
           <NavBrand>
             <IndexLink to="/" activeStyle={{color: '#33e0ff'}}>
               <div className={styles.brand}/>
-              <span>React Redux Example</span>
+              <span>Striim</span>
             </IndexLink>
           </NavBrand>
 
@@ -82,14 +82,16 @@ export default class App extends Component {
               <LinkContainer to="/about">
                 <NavItem eventKey={4}>About Us</NavItem>
               </LinkContainer>
-
+              <LinkContainer to="/Sources">
+                <NavItem eventKey={6}>Sources</NavItem>
+              </LinkContainer>
               {!user &&
               <LinkContainer to="/login">
                 <NavItem eventKey={5}>Login</NavItem>
               </LinkContainer>}
               {user &&
               <LinkContainer to="/logout">
-                <NavItem eventKey={6} className="logout-link" onClick={::this.handleLogout}>
+                <NavItem eventKey={7} className="logout-link" onClick={::this.handleLogout}>
                   Logout
                 </NavItem>
               </LinkContainer>}

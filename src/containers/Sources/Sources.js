@@ -3,8 +3,12 @@ import config from '../../config';
 
 export default class Sources extends Component {
   static propTypes = {
-    info: PropTypes.object
+    children: PropTypes.object.isRequired
   }
+  static contextTypes: {
+    router: React.PropTypes.func
+    };
+
   handleClick(value) {
     console.log('clicked', value);
   }
@@ -13,9 +17,8 @@ export default class Sources extends Component {
     return (
       <div className="container">
         <h1>Create a Source to connect to external data</h1>
-        <div className={styles.tile_container}>
-          <div className={styles.source_tile} onClick={this.handleClick.bind(this, 'Files')}>Files</div>
-          <div name="Hadoop" className={styles.source_tile} onClick={this.handleClick.bind(this, 'Hadoop')}>Hadoop</div>
+        <div className={styles.appContent}>
+          {this.props.children}
         </div>
         <div>
           <h2>{config.app.title}</h2>

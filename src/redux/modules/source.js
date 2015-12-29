@@ -1,29 +1,28 @@
-const PREVIEW = 'striim/sources/PREVIEW';
-const SELECT = 'striim/source/SELECT';
-const DESELECT = 'striim/source/DESELECT';
+const CHOOSE_READER = 'striim/sources/CHOOSE_READER';
+const CHOOSE_PARSER = 'striim/sources/CHOOSE_PARSER';
+const CHANGE = 'striim/sources/CHANGE';
 
 const initialState = {
-  source: null,
-  preview: false,
-  reader: null
+  reader: null,
+  parser: null
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case PREVIEW:
+    case CHOOSE_READER:
       return {
         ...state,
-        load: false
-      };
-    case SELECT:
-      return {
-        ...state,
+        load: false,
         reader: state.reader
       };
-    case DESELECT:
+    case CHOOSE_PARSER:
       return {
         ...state,
-        reader: null
+        parser: state.parser
+      };
+    case CHANGE:
+      return {
+        ...state
       };
     default:
       return state;

@@ -15,7 +15,6 @@ export default function connectData(fetchData, fetchDataDeferred) {
         return <WrappedComponent {...this.props} />;
       }
     }
-
     ConnectData.fetchData = fetchData;
     ConnectData.fetchDataDeferred = fetchDataDeferred;
 

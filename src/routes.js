@@ -13,8 +13,10 @@ import {
     Sources,
     NotFound
   } from 'containers';
+import SourcesLanding from 'containers/Sources/SourcesLanding';
 
 export default (store) => {
+
   const requireLogin = (nextState, replaceState, cb) => {
     function checkAuth() {
       const { auth: { user }} = store.getState();
@@ -50,7 +52,10 @@ export default (store) => {
       <Route path="about" component={About}/>
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
-      <Route path="sources" component={Sources}/>
+      <Route path="sources" component={Sources}>
+        <IndexRoute component={SourcesLanding}/>
+        <Route path="app/:app/reader/:reader" component={Sources}/>
+      </Route>
       <Route path="widgets" component={Widgets}/>
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />

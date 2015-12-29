@@ -70,6 +70,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 if (__DEVTOOLS__) {
   const DevTools = require('./containers/DevTools/DevTools');
+  console.log('COMPONENT ', component);
   ReactDOM.render(
     <Provider store={store} key="provider">
       <div>

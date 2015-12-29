@@ -8,6 +8,7 @@
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2,
+    "no-redeclare": 0,
     "react/jsx-quotes": 0,
     "react/no-multi-comp": 0,
     "import/default": 0,
@@ -29,7 +30,7 @@
   "plugins": [
     "react", "import"
   ],
-  "settings": { 
+  "settings": {
     "import/parser": "babel-eslint",
     "import/resolve": {
       moduleDirectory: ["node_modules", "src"]

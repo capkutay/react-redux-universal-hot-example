@@ -14,11 +14,13 @@ import config from '../../config';
 function fetchData(getState, dispatch) {
   const promises = [];
   if (!isInfoLoaded(getState())) {
+    console.log(loadInfo());
     promises.push(dispatch(loadInfo()));
   }
   if (!isAuthLoaded(getState())) {
     promises.push(dispatch(loadAuth()));
   }
+  // load source types
   return Promise.all(promises);
 }
 
@@ -35,7 +37,8 @@ export default class App extends Component {
   };
 
   static contextTypes = {
-    store: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired,
+    router: React.PropTypes.func
   };
 
   componentWillReceiveProps(nextProps) {

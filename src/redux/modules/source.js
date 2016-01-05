@@ -4,7 +4,8 @@ const CHANGE = 'striim/sources/CHANGE';
 
 const initialState = {
   reader: null,
-  parser: null
+  parser: null,
+  app: null
 };
 
 export default function reducer(state = initialState, action) {

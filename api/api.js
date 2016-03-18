@@ -1,5 +1,3 @@
-require('../server.babel'); // babel registration (runtime transpilation for node)
-
 import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser';
@@ -28,7 +26,6 @@ app.use(bodyParser.json());
 
 
 app.use((req, res) => {
-
   const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
 
   const {action, params} = mapUrl(actions, splittedUrlPath);
@@ -36,7 +33,11 @@ app.use((req, res) => {
   if (action) {
     action(req, params)
       .then((result) => {
-        res.json(result);
+        if (result instanceof Function) {
+          result(res);
+        } else {
+          res.json(result);
+        }
       }, (reason) => {
         if (reason && reason.redirect) {
           res.redirect(reason.redirect);
@@ -61,7 +62,7 @@ if (config.apiPort) {
       console.error(err);
     }
     console.info('----\n==> 🌎  API is running on port %s', config.apiPort);
-    console.info('==> 💻  Send requests to http://%s:%s', (process.env.HOST || 'localhost'), config.apiPort);
+    console.info('==> 💻  Send requests to http://%s:%s', config.apiHost, config.apiPort);
   });
 
   io.on('connection', (socket) => {
@@ -85,7 +86,6 @@ if (config.apiPort) {
     });
   });
   io.listen(runnable);
-
 } else {
   console.error('==>     ERROR: No PORT environment variable has been specified');
 }

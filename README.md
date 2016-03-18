@@ -1,17 +1,17 @@
 # React Redux Universal Hot Example
 
 [![build status](https://img.shields.io/travis/erikras/react-redux-universal-hot-example/master.svg?style=flat-square)](https://travis-ci.org/erikras/react-redux-universal-hot-example)
-[![react-redux-universal channel on discord](https://img.shields.io/badge/discord-react--redux--universal%40reactiflux-blue.svg)](https://discordapp.com/channels/102860784329052160/105739309289623552)
-[![Demo on Heroku](https://img.shields.io/badge/demo-heroku-lightgrey.png)](https://react-redux.herokuapp.com)
-[![Dependency Status](https://david-dm.org/erikras/react-redux-universal-hot-example.svg)](https://david-dm.org/erikras/react-redux-universal-hot-example)
-[![devDependency Status](https://david-dm.org/erikras/react-redux-universal-hot-example/dev-status.svg)](https://david-dm.org/erikras/react-redux-universal-hot-example#info=devDependencies)
-[![PayPal donate button](http://img.shields.io/paypal/donate.png?color=yellowgreen)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2LK57ZQ9YRMN)
+[![Dependency Status](https://david-dm.org/erikras/react-redux-universal-hot-example.svg?style=flat-square)](https://david-dm.org/erikras/react-redux-universal-hot-example)
+[![devDependency Status](https://david-dm.org/erikras/react-redux-universal-hot-example/dev-status.svg?style=flat-square)](https://david-dm.org/erikras/react-redux-universal-hot-example#info=devDependencies)
+[![react-redux-universal channel on discord](https://img.shields.io/badge/discord-react--redux--universal%40reactiflux-brightgreen.svg?style=flat-square)](https://discord.gg/0ZcbPKXt5bZZb1Ko)
+[![Demo on Heroku](https://img.shields.io/badge/demo-heroku-brightgreen.svg?style=flat-square)](https://react-redux.herokuapp.com)
+[![PayPal donate button](https://img.shields.io/badge/donate-paypal-brightgreen.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2LK57ZQ9YRMN)
 
 ---
 
 ## About
 
-This is a starter boiler plate app I've put together using the following technologies:
+This is a starter boilerplate app I've put together using the following technologies:
 
 * ~~Isomorphic~~ [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) rendering
 * Both client and server make calls to load data from separate API server
@@ -24,14 +24,14 @@ This is a starter boiler plate app I've put together using the following technol
 * [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware)
 * [Redux](https://github.com/rackt/redux)'s futuristic [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
 * [Redux Dev Tools](https://github.com/gaearon/redux-devtools) for next generation DX (developer experience). Watch [Dan Abramov's talk](https://www.youtube.com/watch?v=xsSnOQynTHs).
-* [Redux Router](https://github.com/rackt/redux-router) Keep your router state in your Redux store
+* [React Router Redux](https://github.com/reactjs/react-router-redux) Redux/React Router bindings.
 * [ESLint](http://eslint.org) to maintain a consistent code style
 * [redux-form](https://github.com/erikras/redux-form) to manage form state in Redux
 * [lru-memoize](https://github.com/erikras/lru-memoize) to speed up form validation
 * [multireducer](https://github.com/erikras/multireducer) to combine single reducers into one key-based reducer
 * [style-loader](https://github.com/webpack/style-loader), [sass-loader](https://github.com/jtangelder/sass-loader) and [less-loader](https://github.com/webpack/less-loader) to allow import of stylesheets in plain css, sass and less,
 * [bootstrap-sass-loader](https://github.com/shakacode/bootstrap-sass-loader) and [font-awesome-webpack](https://github.com/gowravshekar/font-awesome-webpack) to customize Bootstrap and FontAwesome
-* [react-document-meta](https://github.com/kodyl/react-document-meta) to manage title and meta tag information on both server and client
+* [react-helmet](https://github.com/nfl/react-helmet) to manage title and meta tag information on both server and client
 * [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools) to allow require() work for statics both on client and server
 * [mocha](https://mochajs.org/) to allow writing unit tests for the project.
 
@@ -39,19 +39,35 @@ I cobbled this together from a wide variety of similar "starter" repositories. A
 
 ## Installation
 
-```
+```bash
 npm install
 ```
 
 ## Running Dev Server
 
-```
+```bash
 npm run dev
 ```
 
+The first time it may take a little while to generate the first `webpack-assets.json` and complain with a few dozen `[webpack-isomorphic-tools] (waiting for the first Webpack build to finish)` printouts, but be patient. Give it 30 seconds.
+
+### Using Redux DevTools
+
+[Redux Devtools](https://github.com/gaearon/redux-devtools) are enabled by default in development.
+
+- <kbd>CTRL</kbd>+<kbd>H</kbd> Toggle DevTools Dock
+- <kbd>CTRL</kbd>+<kbd>Q</kbd> Move DevTools Dock Position
+- see [redux-devtools-dock-monitor](https://github.com/gaearon/redux-devtools-dock-monitor) for more detailed information.
+
+If you have the 
+[Redux DevTools chrome extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) installed it will automatically be used on the client-side instead.
+
+If you want to disable the dev tools during development, set `__DEVTOOLS__` to `false` in `/webpack/dev.config.js`.  
+DevTools are not enabled during production.
+
 ## Building and Running Production Server
 
-```
+```bash
 npm run build
 npm run start
 ```
@@ -60,11 +76,15 @@ npm run start
 
 A demonstration of this app can be seen [running on heroku](https://react-redux.herokuapp.com), which is a deployment of the [heroku branch](https://github.com/erikras/react-redux-universal-hot-example/tree/heroku).
 
-## Tutorials
+## Documentation
 
-If you are the kind of person that learns best by following along a tutorial, I can recommend the following.
-
+* [Exploring the Demo App](docs/ExploringTheDemoApp/ExploringTheDemoApp.md) is a guide that can be used before you install the kit.
+* [Installing the Kit](docs/InstallingTheKit/InstallingTheKit.md) guides you through installation and running the development server locally.
+* [Adding Text to the Home Page](docs/AddingToHomePage/AddingToHomePage.md) guides you through adding "Hello, World!" to the home page.
+* [Adding A Page](docs/AddingAPage/AddingAPage.md) guides you through adding a new page.
 * [React Tutorial - Converting Reflux to Redux](http://engineering.wework.com/process/2015/10/01/react-reflux-to-redux/), by Matt Star
+   If you are the kind of person that learns best by following along a tutorial, I can recommend Matt Star's overview and examples.
+
 
 ## Explanation
 
@@ -97,7 +117,7 @@ The client side entry point is reasonably named `client.js`. All it does is load
 The middleware, [`clientMiddleware.js`](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/middleware/clientMiddleware.js), serves two functions:
 
 1. To allow the action creators access to the client API facade. Remember this is the same on both the client and the server, and cannot simply be `import`ed because it holds the cookie needed to maintain session on server-to-server requests.
-2. To allow some actions to pass a "promise generator", a function that takes the API client and returns a promise. Such actions require three action types, the `REQUEST` action that initiates the data loading, and a `SUCCESS` and `FAILURE` action that will be fired depending on the result of the promise. There are other ways to accomplish this, some discussed [here](https://github.com/gaearon/redux/issues/99), which you may prefer, but to the author of this example, the middleware way feels cleanest.
+2. To allow some actions to pass a "promise generator", a function that takes the API client and returns a promise. Such actions require three action types, the `REQUEST` action that initiates the data loading, and a `SUCCESS` and `FAILURE` action that will be fired depending on the result of the promise. There are other ways to accomplish this, some discussed [here](https://github.com/rackt/redux/issues/99), which you may prefer, but to the author of this example, the middleware way feels cleanest.
 
 #### Redux Modules... *What the Duck*?
 
@@ -123,10 +143,12 @@ let logoImage = require('./logo.png');
 
 #### Styles
 
-This project uses [local styles](https://medium.com/seek-ui-engineering/the-end-of-global-css-90d2a4a06284) using [css-loader](https://github.com/webpack/css-loader). The way it works is that you import your stylesheet at the top of the class with your React Component, and then you use the classnames returned from that import. Like so:
+This project uses [local styles](https://medium.com/seek-ui-engineering/the-end-of-global-css-90d2a4a06284) using [css-loader](https://github.com/webpack/css-loader). The way it works is that you import your stylesheet at the top of the `render()` function in your React Component, and then you use the classnames returned from that import. Like so:
 
 ```javascript
+render() {
 const styles = require('./App.scss');
+...
 ```
 
 Then you set the `className` of your element to match one of the CSS classes in your SCSS file, and you're good to go!
@@ -134,6 +156,64 @@ Then you set the `className` of your element to match one of the CSS classes in 
 ```jsx
 <div className={styles.mySection}> ... </div>
 ```
+
+#### Alternative to Local Styles
+
+If you'd like to use plain inline styles this is possible with a few modifications to your webpack configuration.
+
+**1. Configure Isomorphic Tools to Accept CSS**
+
+In `webpack-isomorphic-tools.js` add **css** to the list of style module extensions
+
+```javascript
+    style_modules: {
+      extensions: ['less','scss','css'],
+```
+
+**2. Add a CSS loader to webpack dev config**
+
+In `dev.config.js` modify **module loaders** to include a test and loader for css
+
+```javascript
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
+```
+
+**3. Add a CSS loader to the webpack prod config**
+
+You must use the **ExtractTextPlugin** in this loader. In `prod.config.js` modify **module loaders** to include a test and loader for css
+
+```javascript
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
+```
+
+**Now you may simply omit assigning the `required` stylesheet to a variable and keep it at the top of your `render()` function.**
+
+```javascript
+render() {
+require('./App.css');
+require('aModule/dist/style.css');
+...
+```
+
+**NOTE** In order to use this method with **scss or less** files one more modification must be made. In both `dev.config.js` and `prod.config.js` in the loaders for less and scss files remove 
+
+1. `modules`
+2. `localIdentName...`
+
+Before:
+```javascript
+{ test: /\.less$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap' },
+```
+After:
+```javascript
+{ test: /\.less$/, loader: 'style!css?importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap' },
+```
+
+After this modification to both loaders you will be able to use scss and less files in the same way as css files.
 
 #### Unit Tests
 
@@ -143,7 +223,7 @@ To run the tests in the project, just simply run `npm test` if you have `Chrome`
 
 To keep watching your test suites that you are working on, just set `singleRun: false` in the `karma.conf.js` file. Please be sure set it to `true` if you are running `npm test` on a continuous integration server (travis-ci, etc).
 
-## Heroku Deploy
+## Deployment on Heroku
 
 To get this project to work on Heroku, you need to:
 
@@ -155,20 +235,23 @@ To get this project to work on Heroku, you need to:
 
 The first deploy might take a while, but after that your `node_modules` dir should be cached.
 
-## The Future
-
-* [Inline Styles](docs/InlineStyles.md) - CSS is dead.
-
 ## FAQ
 
-#### Help! It doesn't work on Windows! What do I do?
+This project moves fast and has an active community, so if you have a question that is not answered below please visit our [Discord channel](https://discord.gg/0ZcbPKXt5bZZb1Ko) or file an issue.
 
-Fear not. [chtefi](https://github.com/chtefi) has figured out [what needs to be changed](https://github.com/erikras/react-redux-universal-hot-example/pull/21/files) to make it work on Windows 8.
 
-#### How do I disable the dev tools?
+## Roadmap 
 
-They will only show in development, but if you want to disable them even there, set `__DEVTOOLS__` to `false` in `/webpack/dev.config.js`.
+Although this isn't a library, we recently started versioning to make it easier to track breaking changes and emerging best practices. 
 
+* [Inline Styles](docs/InlineStyles.md) - CSS is dead
+
+## Contributing
+
+I am more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :) 
+
+If you would like to submit a pull request, please make an effort to follow the guide in [CONTRIBUTING.md](CONTRIBUTING.md). 
+ 
 ---
 Thanks for checking this out.
 

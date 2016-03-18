@@ -1,28 +1,26 @@
 /**
  * THIS IS THE ENTRY POINT FOR THE CLIENT, JUST LIKE server.js IS THE ENTRY POINT FOR THE SERVER.
  */
-import 'babel/polyfill';
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createHistory from 'history/lib/createBrowserHistory';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import io from 'socket.io-client';
 import {Provider} from 'react-redux';
-import {Router} from 'react-router';
-import {syncReduxAndRouter} from 'redux-simple-router';
+import { Router, browserHistory } from 'react-router';
+import { ReduxAsyncConnect } from 'redux-async-connect';
+import useScroll from 'scroll-behavior/lib/useStandardScroll';
+
 import getRoutes from './routes';
 
 const client = new ApiClient();
-
+const history = useScroll(() => browserHistory)();
 const dest = document.getElementById('content');
-const store = createStore(client, window.__data);
-const history = createHistory();
-
-syncReduxAndRouter(history, store);
+const store = createStore(history, client, window.__data);
 
 function initSocket() {
-  const socket = io('', {path: '/api/ws', transports: ['polling']});
+  const socket = io('', {path: '/ws'});
   socket.on('news', (data) => {
     console.log(data);
     socket.emit('my other event', { my: 'data from client' });
@@ -36,19 +34,10 @@ function initSocket() {
 
 global.socket = initSocket();
 
-function createElement(Component, props) {
-  if (Component.fetchData) {
-    Component.fetchData(store.getState,
-      store.dispatch,
-      props.location, // eslint-disable-line react/prop-types
-      props.params // eslint-disable-line react/prop-types
-    );
-  }
-  return React.createElement(Component, props);
-}
-
 const component = (
-  <Router createElement={createElement} history={history}>
+  <Router render={(props) =>
+        <ReduxAsyncConnect {...props} helpers={{client}} filter={item => !item.deferred} />
+      } history={history}>
     {getRoutes(store)}
   </Router>
 );
@@ -68,9 +57,8 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-if (__DEVTOOLS__) {
+if (__DEVTOOLS__ && !window.devToolsExtension) {
   const DevTools = require('./containers/DevTools/DevTools');
-  console.log('COMPONENT ', component);
   ReactDOM.render(
     <Provider store={store} key="provider">
       <div>

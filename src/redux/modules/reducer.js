@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import multireducer from 'multireducer';
-import { routeReducer } from 'redux-simple-router';
+import { routeReducer } from 'react-router-redux';
+import {reducer as reduxAsyncConnect} from 'redux-async-connect';
 
 import auth from './auth';
 import counter from './counter';
@@ -11,6 +12,7 @@ import source from './source';
 
 export default combineReducers({
   routing: routeReducer,
+  reduxAsyncConnect,
   auth,
   form,
   multireducer: multireducer({

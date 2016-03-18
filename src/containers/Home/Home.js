@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { CounterButton, GithubButton } from 'components';
+import Helmet from 'react-helmet';
 
 export default class Home extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Home extends Component {
     const logoImage = require('./logo.png');
     return (
       <div className={styles.home}>
+        <Helmet title="Home"/>
         <div className={styles.masthead}>
           <div className="container">
             <div className={styles.logo}>
@@ -141,7 +143,7 @@ export default class Home extends Component {
             <dt>WebSockets / socket.io</dt>
             <dd>
               The <Link to="/chat">Chat</Link> uses the socket.io technology for real-time
-              commnunication between clients. You need to <Link to="/login">login</Link> first.
+              communication between clients. You need to <Link to="/login">login</Link> first.
             </dd>
           </dl>
         </div>

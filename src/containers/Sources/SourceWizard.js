@@ -11,9 +11,7 @@ export default class SourceWizard extends Component {
     console.log('Component mounted w/ props:', this.props);
     // TODO based on the props, we will invoke a thunk that will asynchronously call the preview API and set the store state
     // props contains the parser and reader
-
   }
-
   render() {
     console.log('rendering wizard');
     return (

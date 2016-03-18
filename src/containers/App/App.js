@@ -35,13 +35,11 @@ export default class App extends Component {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
     logout: PropTypes.func.isRequired,
-    updatePath: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
   };
 
   static contextTypes = {
-    store: PropTypes.object.isRequired,
-    router: React.PropTypes.func
+    store: PropTypes.object.isRequired
   };
 
   componentWillReceiveProps(nextProps) {
@@ -93,7 +91,7 @@ export default class App extends Component {
                 <NavItem eventKey={4}>About Us</NavItem>
               </LinkContainer>
               <LinkContainer to="/Sources">
-                <NavItem eventKey={6}>Sources</NavItem>
+                <NavItem eventKey={7}>Sources</NavItem>
               </LinkContainer>
               {!user &&
               <LinkContainer to="/login">
@@ -123,7 +121,7 @@ export default class App extends Component {
 
         <div className="well text-center">
           Have questions? Ask for help <a
-          href="https://github.com/erikras/react-redux-universal-hot-example/issues"
+          href="https://github.com/capkutay/react-redux-universal-hot-example/issues"
           target="_blank">on Github</a> or in the <a
           href="https://discord.gg/0ZcbPKXt5bZZb1Ko" target="_blank">#react-redux-universal</a> Discord channel.
         </div>

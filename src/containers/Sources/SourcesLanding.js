@@ -1,20 +1,33 @@
-import React, {Component, PropTypes} from 'react';
-import { pushPath } from 'redux-simple-router';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+// @connect(null,
+//  { pushPath })
 @connect(null,
-  { pushPath })
+  {})
 export default class SourcesLanding extends Component {
 
-  static propTypes = {
-    pushPath: PropTypes.func.isRequired
-  };
+  // static propTypes = {
+  //  pushPath: PropTypes.func.isRequired
+  // };
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  }
 
   constructor() {
     super();
+    this.state = {
+      sources: [
+        {key: 0, name: 'Hadoop'},
+        {key: 1, name: 'Files'},
+        {key: 2, name: 'Samples'}
+      ]
+    };
   }
   handleClick(value) {
-    this.props.pushPath('/Sources/app/Global/reader/' + value);
+    // this.props.pushPath('/Sources/app/Global/reader/' + value);
+    this.context.router.push('/Sources/app/Global/reader/' + value);
   }
 
   render() {

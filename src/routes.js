@@ -14,6 +14,8 @@ import {
     NotFound
   } from 'containers';
 import SourcesLanding from 'containers/Sources/SourcesLanding';
+import SourceWizard from 'containers/Sources/SourceWizard';
+
 
 export default (store) => {
 
@@ -32,6 +34,10 @@ export default (store) => {
     } else {
       checkAuth();
     }
+  };
+
+  const callMe = () => {
+    console.log('You called it');
   };
 
   /**
@@ -54,7 +60,7 @@ export default (store) => {
       <Route path="survey" component={Survey}/>
       <Route path="sources" component={Sources}>
         <IndexRoute component={SourcesLanding}/>
-        <Route path="app/:app/reader/:reader" component={Sources}/>
+        <Route onEnter={ callMe } path="app/:app/reader/:reader" component={SourceWizard}/>
       </Route>
       <Route path="widgets" component={Widgets}/>
       { /* Catch all route */ }

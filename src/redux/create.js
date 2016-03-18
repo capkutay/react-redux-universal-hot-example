@@ -1,8 +1,9 @@
 import { createStore as _createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import createMiddleware from './middleware/clientMiddleware';
 
 export default function createStore(client, data) {
-  const middleware = [createMiddleware(client)];
+  const middleware = [createMiddleware(client), thunk];
 
   let finalCreateStore;
   if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {

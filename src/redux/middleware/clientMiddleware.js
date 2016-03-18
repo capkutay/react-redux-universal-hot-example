@@ -1,6 +1,7 @@
 export default function clientMiddleware(client) {
   return ({dispatch, getState}) => {
     return next => action => {
+      console.log('dispatching something');
       if (typeof action === 'function') {
         return action(dispatch, getState);
       }

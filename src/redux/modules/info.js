@@ -9,6 +9,7 @@ const initialState = {
 export default function info(state = initialState, action = {}) {
   switch (action.type) {
     case LOAD:
+      console.log('LOADING ', action);
       return {
         ...state,
         loading: true
@@ -37,6 +38,7 @@ export function isLoaded(globalState) {
 }
 
 export function load() {
+  console.log('EXPORTING LOAD', Date.now());
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('/loadInfo')

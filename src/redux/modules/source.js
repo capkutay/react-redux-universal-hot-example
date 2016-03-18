@@ -14,12 +14,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         load: false,
-        reader: state.reader
+        reader: action.type
       };
     case CHOOSE_PARSER:
       return {
         ...state,
-        parser: state.parser
+        parser: action.parser
       };
     case CHANGE:
       return {
@@ -28,5 +28,10 @@ export default function reducer(state = initialState, action) {
     default:
       return state;
   }
+}
+
+export function chooseReader(reader) {
+  console.log('');
+  return { type: CHOOSE_READER, reader };
 }
 
